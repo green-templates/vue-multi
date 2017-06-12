@@ -1,0 +1,137 @@
+/**
+ * component
+ * 公用的组件样式
+ */
+
+/**
+ * 网格系统
+ *
+ <div class="grid">
+     <div class="grid-col grid-col-12">12</div>
+     <div class="grid-col grid-col-12">12</div>
+ </div>
+
+ <div class="grid grid-gutter">
+     <div class="grid-col grid-col-12">12</div>
+     <div class="grid-col grid-col-12">12</div>
+ </div>
+ */
+
+// class-name
+$grid: grid !default;
+$grid-col: -col !default;
+$grid-gutter: -gutter !default;
+
+$grid-column: 24 !default;//分24栏
+$grid-gutter-space: 2% !default;//间距8px 可选
+
+.#{$grid} {
+    @extend %clearfix;
+
+    &#{$grid-col} {
+        @extend %fl;
+    }
+
+    &#{$grid-gutter} {
+        margin: 0 (-$grid-gutter-space);
+
+        .#{$grid}#{$grid-col} {
+            padding: 0 ($grid-gutter-space);
+        }
+    }
+}
+
+@for $i from 1 through $grid-column {
+    .#{$grid}#{$grid-col}-#{$i} {
+        width: $i / $grid-column * 100%;
+    }
+}
+
+/* 公共按钮 start */
+/*
+<button class="btn-bg | btn-bd"></button>
+*/
+// 背景色按钮
+%btn-style {
+    font-size: rem(30);
+    height: rem(88);
+    line-height: rem(88);
+    display: block;
+    margin: auto;
+    text-align: center;
+    @extend %bdrs-base;
+    width: 88%;
+}
+
+.btn-bg {
+    @extend %btn-style;
+    background: $c-theme;
+    color: $c-white;
+}
+// 边框按钮
+.btn-bd {
+    @extend %btn-style;
+    background: $c-white;
+    color: $c-theme;
+    border: 1px solid currentColor;
+}
+// 按钮盒子
+.btn-wrap {
+    padding: rem(100) 0;
+}
+/* 公共按钮 end */
+
+/* 通栏样式 start */
+/*
+<div class="common-row">
+    <div class="row-left"></div>
+    <div class="row-right"></div>
+</div>
+<div class="common-row common-row-arrow">
+    <div class="row-left"></div>
+    <div class="row-right"></div>
+</div>
+*/
+.common-row {
+    padding: rem(30) 0;
+    overflow: hidden;
+    @include border($d: bottom);
+    @extend %bg-white;
+    @extend %db;
+
+    .row-left {
+        margin-right: rem(20);
+        @extend %fl;
+    }
+
+    .row-right {
+        @extend %fr;
+    }
+
+    .row-middle {
+        padding-left: rem(160);
+        padding-right: rem(260);
+    }
+}
+.common-row-arrow {
+    position: relative;
+
+    &:after {
+        content: '';
+        width: rem(20);
+        height: rem(20);
+        @include border($d: right);
+        @include border($d: top);
+        transform: rotate(45deg);
+        @extend %pos-a;
+        @extend %mg-auto;
+        @extend %dir-tb;
+        // right: rem(30);
+        right: rem(10);
+    }
+
+    .row-right {
+        padding-right: rem(45);
+    }
+}
+/* 通栏样式 end */

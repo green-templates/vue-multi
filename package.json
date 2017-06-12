@@ -1,0 +1,57 @@
+{
+  "name": "vue-multi",
+  "version": "0.1.0",
+  "description": "vue-multi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackFGreen/vue-multi.git"
+  },
+  "author": "Jack Green",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node build/webpack.dev.js",
+    "build": "node build/webpack.build.js"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "qs": "^6.4.0",
+    "vue": "^2.3.3",
+    "vue-router": "^2.5.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "clean-webpack-plugin": "^0.1.14",
+    "commander": "^2.9.0",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "image-webpack-loader": "^3.0.0",
+    "ip": "^1.1.4",
+    "json-loader": "^0.5.4",
+    "net": "^1.0.2",
+    "node-sass": "^4.5.3",
+    "opn": "^5.0.0",
+    "postcss-loader": "^1.1.1",
+    "qrcode-terminal": "^0.11.0",
+    "sass-loader": "^4.0.2",
+    "shelljs": "^0.7.8",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^2.0.8",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^11.0.0",
+    "vue-style-loader": "^2.0.0",
+    "vue-template-compiler": "^2.1.10",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
