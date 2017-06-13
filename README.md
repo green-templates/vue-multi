@@ -25,12 +25,12 @@ $ ./build.sh xxx
 ```
 
 ## 文件说明
-`src` 下存放公共文件  
+`src` 下存放 公共文件  
 `src/modules/` 下，单独页面使用的文件放在单独的模块内
 
 ## 目录结构
 ├── README.md  
-├── browserslist  // 浏览器兼容列表，用于 autoprefixer  
+├── browserslist  // 浏览器兼容列表，用于 autoprefixer  
 ├── build  // webpack 配置文件  
 │   ├── entry.js  
 │   ├── webpack.build.js  
@@ -45,7 +45,7 @@ $ ./build.sh xxx
 │   ├── images  // 公告图片  
 │   │   └── vue.png  
 │   ├── modules  // 多页面模块文件夹，不同页面放入不同子目录中  
-│   │   ├── multi  // 带路由示例  
+│   │   ├── multi  // 带路由示例  
 │   │   │   ├── app.js  // 入口 js  
 │   │   │   ├── app.vue  // 首页  
 │   │   │   ├── images  // 私有图片  
@@ -62,13 +62,13 @@ $ ./build.sh xxx
 │   │       │   └── vue.png  
 │   │       ├── index.html  // 入口 html  
 │   │       └── service.js  // 私有 js  
-│   ├── scss  // 公共 scss  
+│   ├── scss  // 公共 scss  
 │   │   ├── _global.scss  // 全局变量等  
 │   │   ├── component.scss  // 组件  
 │   │   ├── layer.scss  // layer  
 │   │   ├── layout.scss  // 集合  
 │   │   ├── normalize.scss  
-│   │   └── reset.scss  // 自定义  
+│   │   └── reset.scss  // 自定义  
 │   └── service  // 公共 js  
 │       ├── ajax  // ajax  
 │       │   ├── _global.js  // axios 配置  
@@ -78,7 +78,7 @@ $ ./build.sh xxx
 │       ├── storage.js  // localStorage cookie  
 │       ├── tcheck.js  // 类型检查  
 │       ├── title.js  // 修改 title  
-│       ├── tool.js  // 其他  
+│       ├── tool.js  // 其他  
 │       └── validate.js  // 验证  
 ├── static  
 │   └── vconsole.min.js  
