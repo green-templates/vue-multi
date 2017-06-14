@@ -2,7 +2,7 @@
 
 ## 新建页面
 在 `src/modules` 目录下新建文件夹，没有路由参照 `single` 示例，有路由参照 `multi` 示例，`文件夹名`用于 `开发` 和 `编译`
-> 入口文件 `app.js 和 index.html` 不要更改
+> 入口文件 `app.js` 和 `index.html` 文件名 不要更改
 
 ## 开发
 `xxx` 为每个页面所在文件夹
@@ -26,7 +26,7 @@ $ ./build.sh xxx
 
 ## 文件说明
 `src` 下存放 公共文件  
-`src/modules/` 下，单独页面使用的文件放在单独的模块内
+`src/modules/xxx` 下，单独页面使用的文件放在单独的模块内
 
 ## 目录结构
 ├── README.md  
