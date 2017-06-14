@@ -4,7 +4,7 @@
   "description": "vue-multi",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JackFGreen/vue-multi.git"
+    "url": "git+https://github.com/green-templates/vue-multi.git"
   },
   "author": "Jack Green",
   "license": "MIT",
