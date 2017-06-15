@@ -15,13 +15,21 @@ $ ./develop.sh xxx
 ```
 
 ## 编译
-`xxx` 为每个页面所在文件夹
+`xxx` 为每个页面所在文件夹  
+`type` 为项目用到的依赖类型，打包成 lib.js，参照 `module_lib.js`
+
+e.g.
+- 0 => vue
+- 1 => vue && axios
+- 2 => vue && vue-router
+- 3 => vue && vue-router && axios
+
 ```sh
-$ npm run build xxx
+$ npm run build xxx type
 ```
 or
 ```sh
-$ ./build.sh xxx
+$ ./build.sh xxx type
 ```
 
 ## 文件说明
@@ -29,10 +37,12 @@ $ ./build.sh xxx
 `src/modules/xxx` 下，单独页面使用的文件放在单独的模块内
 
 ## 目录结构
+.
 ├── README.md  
 ├── browserslist  // 浏览器兼容列表，用于 autoprefixer  
 ├── build  // webpack 配置文件  
 │   ├── entry.js  
+│   ├── module_lib.js  
 │   ├── webpack.build.js  
 │   ├── webpack.config.js  
 │   └── webpack.dev.js  
@@ -42,26 +52,29 @@ $ ./build.sh xxx
 ├── src  
 │   ├── components // 公共组件  
 │   │   └── DConsole.vue // vConsole 组件  
-│   ├── images  // 公告图片  
+│   ├── images   
 │   │   └── vue.png  
 │   ├── modules  // 多页面模块文件夹，不同页面放入不同子目录中  
 │   │   ├── multi  // 带路由示例  
 │   │   │   ├── app.js  // 入口 js  
-│   │   │   ├── app.vue  // 首页  
 │   │   │   ├── images  // 私有图片  
 │   │   │   │   └── vue.png  
 │   │   │   ├── index.html  // 入口 html  
-│   │   │   ├── pages  // 子页面  
+│   │   │   ├── pages  // 页面  
+│   │   │   │   ├── app.vue  
 │   │   │   │   └── page.vue  
-│   │   │   ├── routes.js  // 路由  
-│   │   │   └── service.js  // 私有 js  
+│   │   │   ├── router  // 路由  
+│   │   │   │   └── routes.js  
+│   │   │   └── service  // 私有 js  
+│   │   │       └── service.js  
 │   │   └── single  // 单独页示例  
 │   │       ├── app.js  // 入口 js  
-│   │       ├── app.vue  // 首页  
+│   │       ├── app.vue  // 主页  
 │   │       ├── images  // 私有图片  
 │   │       │   └── vue.png  
 │   │       ├── index.html  // 入口 html  
-│   │       └── service.js  // 私有 js  
+│   │       └── service  // 私有 js  
+│   │           └── service.js  
 │   ├── scss  // 公共 scss  
 │   │   ├── _global.scss  // 全局变量等  
 │   │   ├── component.scss  // 组件  
@@ -70,7 +83,7 @@ $ ./build.sh xxx
 │   │   ├── normalize.scss  
 │   │   └── reset.scss  // 自定义  
 │   └── service  // 公共 js  
-│       ├── ajax  // ajax  
+│       ├── ajax  // axios  
 │       │   ├── _global.js  // axios 配置  
 │       │   └── ajax.js  // 封装的 ajax  
 │       ├── layer.js  // layer 弹框  
@@ -83,8 +96,3 @@ $ ./build.sh xxx
 ├── static  
 │   └── vconsole.min.js  
 └── task.todo  
-  
-
-
-
-

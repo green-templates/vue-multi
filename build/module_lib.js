@@ -7,10 +7,10 @@ var r = ['vue-router']
 var a = ['axios', 'qs', 'es6-promise']
 
 var lib = [
-    v, // single
-    v.concat(a), // single && axios
-    v.concat(r), // multi
-    v.concat(r, a) // multi && axios
+    v, // vue
+    v.concat(a), // vue && axios
+    v.concat(r), // vue && vue-router
+    v.concat(r, a) // vue && vue-router && axios
 ]
 
 module.exports = lib
