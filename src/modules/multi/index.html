@@ -4,6 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+
+    <!-- 优先使用 Chrome(如果安装了 chrome frame)， IE 最新版本   -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <!-- 不让百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 忽略手机号，邮箱 -->
+    <meta name="format-detection" content="telephone=no, email=no">
+    <!-- qq强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body>
@@ -12,6 +27,7 @@
         <router-view></router-view>
     </div>
 
+    <script src="./static/vconsole.min.js"></script>
 </body>
 
 </html>

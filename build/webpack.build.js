@@ -1,18 +1,31 @@
+var shell = require('shelljs')
 var path = require('path');
 var webpack = require('webpack');
 var config = require('./webpack.config.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var module_lib = require('./module_lib')
+
+// lib
+var args = process.argv.slice(2)
+var libArg = args[1]
+
+if (!(libArg <= 3 && libArg >= 0)) {
+    console.log('========== 请输入 lib 参数 ==========')
+    console.log('0 - vue')
+    console.log('1 - vue && axios')
+    console.log('2 - vue && vue-router')
+    console.log('3 - vue && vue-router && axios')
+    console.log('')
+    console.log('Example:')
+    console.log('npm run build multi 2')
+    console.log('')
+    process.exit()
+}
 // package.json 中 的依赖
-config.entry.lib = [
-    // 'jquery',
-    'vue',
-    // 'vue-router',
-    // 'axios',
-    // 'qs',
-    // 'es6-promise'
-];
+config.entry.lib = module_lib[libArg]
+
 config.entry.service = [
     path.resolve(__dirname, '../src/modules/' + config.moduleName + '/service/service.js')
 ];
@@ -78,6 +91,8 @@ module.exports = config;
 webpack(config, function(err, stats) {
 
     if (err) throw err;
+
+    shell.cp('-R', './static/*', './dist/' + config.moduleName + '/static')
 
     process.stdout.write(stats.toString({
         chunks: false,

@@ -5,9 +5,6 @@
         <img src="../../../images/vue.png" alt="">
         <img src="../images/vue.png" alt="">
 
-        <img src="../../../images/bigg.jpeg" alt="">
-        <img src="../images/big.jpeg" alt="">
-
         <router-link to="page">page</router-link>
 
         <d-console></d-console>

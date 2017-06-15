@@ -17,10 +17,12 @@ var args = process.argv.slice(2)
 
 if (getEntry.modules.indexOf(args[0]) > -1) {
     moduleName = args[0]
-    console.log('========== ' + moduleName + ' ==========')
+    console.log('========== build ' + moduleName + ' ==========')
+    console.log('')
 } else {
     console.log('========== 请输入正确的模块名 ==========')
-    return
+    console.log('')
+    process.exit()
 }
 
 module.exports = {
