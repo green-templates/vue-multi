@@ -5,6 +5,9 @@
         <img src="../../images/vue.png" alt="">
         <img src="./images/vue.png" alt="">
 
+        <img src="../../images/bigg.jpeg" alt="">
+        <img src="./images/big.jpeg" alt="">
+
         <d-console></d-console>
     </div>
 </template>

@@ -31,7 +31,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname, '../dist/modules/' + moduleName),
+        path: path.resolve(__dirname, '../dist/' + moduleName),
         publicPath: '',
         filename: '[name].[hash:7].js',
         chunkFilename: '[name].[chunkhash:7].js'
@@ -79,7 +79,7 @@ module.exports = {
         }, {
             test: /\.(png|gif|jpe?g)(\?.*)?$/,
             loaders: [
-                'url?limit=8192&name=images/[name].[hash:7].[ext]',
+                'url?limit=8192&name=static/images/[name].[hash:7].[ext]',
                 'image-webpack'
             ]
         }, {
@@ -87,7 +87,7 @@ module.exports = {
             loader: 'url',
             query: {
                 limit: 8192,
-                name: 'fonts/[name].[hash:7].[ext]'
+                name: 'static/fonts/[name].[hash:7].[ext]'
             }
         }]
     },

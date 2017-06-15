@@ -1,5 +1,5 @@
 import App from './app.vue'
-import validate from './service'
+import validate from './service/service'
 import '../../scss/layout.scss'
 
 Vue.use(validate)
