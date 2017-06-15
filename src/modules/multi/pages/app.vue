@@ -2,8 +2,11 @@
     <div class="app-multi">
         {{test}}
 
-        <img src="../../images/vue.png" alt="">
-        <img src="./images/vue.png" alt="">
+        <img src="../../../images/vue.png" alt="">
+        <img src="../images/vue.png" alt="">
+
+        <img src="../../../images/bigg.jpeg" alt="">
+        <img src="../images/big.jpeg" alt="">
 
         <router-link to="page">page</router-link>
 
@@ -12,7 +15,7 @@
 </template>
 
 <script>
-import DConsole from '../../components/DConsole'
+import DConsole from '../../../components/DConsole'
 
 export default {
     data() {
@@ -28,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/_global.scss';
+@import '../../../scss/_global.scss';
 
 .app-multi {
     color: blue;

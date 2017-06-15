@@ -4,8 +4,8 @@ export default [
         name: 'app',
         component: function(resolve) {
             require.ensure([], function() {
-                resolve(require('./app.vue'));
-            }, './app.vue');
+                resolve(require('../pages/app.vue'));
+            }, './static/pages/app.vue');
         }
     },
     {
@@ -13,8 +13,8 @@ export default [
         name: 'page',
         component: function(resolve) {
             require.ensure([], function() {
-                resolve(require('./pages/page.vue'));
-            }, './pages/page.vue');
+                resolve(require('../pages/page.vue'));
+            }, './static/pages/page.vue');
         }
     },
     {

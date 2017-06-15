@@ -8,9 +8,10 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 config.entry.lib = [
     // 'jquery',
     'vue',
-    'vue-router',
-    'axios',
-    'qs'
+    // 'vue-router',
+    // 'axios',
+    // 'qs',
+    // 'es6-promise'
 ];
 config.entry.service = [
     path.resolve(__dirname, '../src/modules/' + config.moduleName + '/service/service.js')
@@ -31,7 +32,8 @@ config.module.loaders.forEach(function(el) {
 config.resolve.alias = {
     'vue': 'vue/dist/vue.min.js',
     'vue-router': 'vue-router/dist/vue-router.min.js',
-    'axios': 'axios/dist/axios.min.js'
+    'axios': 'axios/dist/axios.min.js',
+    'es6-promise': 'es6-promise/dist/es6-promise.min.js'
 }
 
 config.plugins.unshift(

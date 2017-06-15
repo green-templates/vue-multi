@@ -1,5 +1,5 @@
-import routes from './routes'
-import validate from './service'
+import routes from './router/routes'
+import validate from './service/service'
 import '../../scss/layout.scss'
 
 Vue.use(VueRouter)
@@ -10,7 +10,7 @@ const router = new VueRouter({
 })
 
 router.afterEach(route => {
-    document.title = route.name;
+    title(route.name)
     window.scrollTo(0, 0);
     layer.closeAll()
 })

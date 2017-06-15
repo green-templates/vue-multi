@@ -1,3 +1,7 @@
+// 兼容某些低版本手机不支持 Promise  e.g. 锤子
+// https://github.com/mzabriskie/axios#promises
+require('es6-promise').polyfill();
+
 import axios from 'axios';
 //  using application/x-www-form-urlencoded
 // https://github.com/mzabriskie/axios#using-applicationx-www-form-urlencoded-format
