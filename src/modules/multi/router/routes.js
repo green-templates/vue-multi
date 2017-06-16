@@ -5,7 +5,7 @@ export default [
         component: function(resolve) {
             require.ensure([], function() {
                 resolve(require('../pages/app.vue'));
-            }, './static/pages/app.vue');
+            }, './pages/app.vue');
         }
     },
     {
@@ -14,7 +14,7 @@ export default [
         component: function(resolve) {
             require.ensure([], function() {
                 resolve(require('../pages/page.vue'));
-            }, './static/pages/page.vue');
+            }, './pages/page.vue');
         }
     },
     {
