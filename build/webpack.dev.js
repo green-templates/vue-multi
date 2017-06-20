@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'dev'
+
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 
@@ -29,17 +31,21 @@ config.module.loaders.forEach(function(el) {
 config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
 function startDev(port) {
-
     var startPage = 'http://' + localhost + ':' + port + '/';
 
     //开启 souceMap url() 图片相对路径会指向 （chrome:blob or chrome:devtools），需要设置 publicPath
     //https://github.com/webpack/style-loader/blob/master/README.md
     config.output.publicPath = startPage;
 
-    config.entry.app.unshift(
-        'webpack-dev-server/client?' + startPage, //热加载
-        'webpack/hot/dev-server' //热替换
-    );
+    for (var k in config.entry) {
+        if (config.entry.hasOwnProperty(k)) {
+            var el = config.entry[k];
+            el.unshift(
+                'webpack-dev-server/client?' + startPage, //热加载
+                'webpack/hot/dev-server' //热替换
+            )
+        }
+    }
 
     new WebpackDevServer(webpack(config), {
         // proxy: {

@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
 var getpostcss = function() {
@@ -10,27 +9,38 @@ var getpostcss = function() {
     return postcss;
 };
 
+// 获取入口
 var getEntry = require('./entry')
 
-var moduleName = ''
 var args = process.argv.slice(2)
+var moduleName = args[0] || ''
 
-if (getEntry.modules.indexOf(args[0]) > -1) {
-    moduleName = args[0]
+var entry = {}
+
+if (getEntry.modules.indexOf(moduleName) > -1) {
+    console.log('')
     console.log('========== build ' + moduleName + ' ==========')
     console.log('')
+
+    entry[moduleName] = [path.resolve(__dirname, '../src/modules/' + moduleName + '/app.js')]
+
+} else if (moduleName == 'all') {
+    console.log('')
+    console.log('========== build ' + moduleName + ' ==========')
+    entry = getEntry.entry
+
 } else {
     console.log('========== 请输入正确的模块名 ==========')
     console.log('')
     process.exit()
 }
+// 获取 htmlPlugin
+var htmlPlugins = require('./htmlPlugin')(moduleName, args[0])
 
 module.exports = {
     moduleName,
     //入口文件
-    entry: {
-        app: [path.resolve(__dirname, '../src/modules/' + moduleName + '/app.js')]
-    },
+    entry,
 
     output: {
         path: path.resolve(__dirname, '../dist/' + moduleName),
@@ -126,20 +136,6 @@ module.exports = {
             // $: 'jquery',
             Vue: 'vue',
             VueRouter: 'vue-router'
-        }),
-
-        //生成入口文件并引入js, css等文件
-        new HtmlWebpackPlugin({
-            // title: 'demo',
-            filename: 'index.html',
-            template: path.resolve(__dirname, '../src/modules/' + moduleName + '/index.html'),
-            // favicon: path.resolve(__dirname, '../src/images/favicon.ico'),
-            chunksSortMode: 'dependency', //按依赖顺序引入
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-            }
         })
-    ]
+    ].concat(htmlPlugins)
 };

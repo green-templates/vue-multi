@@ -5,6 +5,7 @@
 > 入口文件 `app.js` 和 `index.html` 文件名 不要更改
 
 ## 开发
+### 启动单个模块服务
 `xxx` 为每个页面所在文件夹
 ```sh
 $ npm run dev xxx
@@ -13,6 +14,15 @@ or
 ```sh
 $ ./develop.sh xxx
 ```
+### 启动所有模块服务
+将 `xxx` 替换为 `all`
+
+### 浏览器访问
+`host + port + xxx`  
+```
+http://localhost:2222/single
+```
+
 
 ## 编译
 `xxx` 为每个页面所在文件夹  

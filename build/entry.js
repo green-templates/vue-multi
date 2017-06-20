@@ -12,13 +12,15 @@ module.exports = (function() {
             end = name.length - 3;
         var n = name.slice(start, end);
         n = n.slice(0, n.lastIndexOf('/')); //保存各个组件的入口
-        entry[n] = name;
+        entry[n] = [name];
 
         modules.push(n)
     });
 
-    return {
+    var entrys = {
         entry,
         modules
     }
+    console.log(entrys)
+    return entrys
 })()
