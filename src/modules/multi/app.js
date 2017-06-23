@@ -1,6 +1,6 @@
 import routes from './router/routes'
 import validate from './service/service'
-import '../../scss/layout.scss'
+import './scss/layout.scss'
 
 Vue.use(VueRouter)
 Vue.use(validate)

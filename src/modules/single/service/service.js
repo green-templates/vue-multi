@@ -1,4 +1,6 @@
-import '../../../service/rem'
+import rem from '../../../service/rem'
+rem()
+
 import '../../../service/tcheck'
 import '../../../service/tool'
 import '../../../service/storage'

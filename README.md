@@ -44,7 +44,7 @@ $ ./build.sh xxx type
 
 ## 文件说明
 `src` 下存放 公共文件  
-`src/modules/xxx` 下，单独页面使用的文件放在单独的模块内
+`src/modules/xxx/service/service.js`, `src/scss/` 中引入的文件看情况引入
 
 ## 目录结构
 .

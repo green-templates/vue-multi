@@ -1,13 +1,14 @@
-/**
- * rem 适配
- * @param {Number} base_font    默认字体大小
- * @param {Number} base_width   默认屏幕宽度 iphone5
- * @param {Number} max_width    最大屏幕宽度
- *
- * 参考 hostcss https://github.com/imochen/hotcss
- */
-;
-!((window) => {
+export default (canScale) => {
+    /**
+     * rem 适配
+     * @param {Boolean} canScale    是否启用 initial-scale  当第三方样式文件不支持时
+     * @param {Number} base_font    默认字体大小
+     * @param {Number} base_width   默认屏幕宽度 iphone5
+     * @param {Number} max_width    最大屏幕宽度
+     *
+     * 参考 hostcss https://github.com/imochen/hotcss
+     */
+
     var docEl = document.documentElement;
 
     var base_font = 100;
@@ -29,18 +30,21 @@
     // 动态修改 html 字体
     rem.setHtmlFont = () => {
         var dpr = window.devicePixelRatio || 1;
-        var scale = 1 / dpr;
 
-        var viewportEl = docEl.querySelector('[name="viewport"]');
-        var content = 'width=device-width,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no';
+        if (canScale !== false) {
+            var scale = 1 / dpr;
 
-        if (viewportEl) {
-            viewportEl.setAttribute('content', content);
-        } else {
-            viewportEl = document.createElement('meta');
-            viewportEl.setAttribute('name', 'viewport');
-            viewportEl.setAttribute('content', content);
-            document.head.appendChild(viewportEl);
+            var viewportEl = docEl.querySelector('[name="viewport"]');
+            var content = 'width=device-width,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no';
+
+            if (viewportEl) {
+                viewportEl.setAttribute('content', content);
+            } else {
+                viewportEl = document.createElement('meta');
+                viewportEl.setAttribute('name', 'viewport');
+                viewportEl.setAttribute('content', content);
+                document.head.appendChild(viewportEl);
+            }
         }
 
         var client_width = docEl.getBoundingClientRect().width || docEl.clientWidth || window.innerWidth;
@@ -48,6 +52,7 @@
             client_width = max_width * dpr / 1.5;
         }
 
+        docEl.style.maxWidth = max_width * dpr + 'px'
         docEl.style.fontSize = client_width / base_width * base_font + 'px';
     }
     rem.setHtmlFont();
@@ -56,4 +61,4 @@
     document.addEventListener('DOMContentLoaded', rem.setHtmlFont, false);
 
     window.rem = rem;
-})(window)
+}
