@@ -1,9 +1,8 @@
 import routes from './router/routes'
-import validate from './service/service'
+import './service/service'
 import './scss/layout.scss'
 
 Vue.use(VueRouter)
-Vue.use(validate)
 
 const router = new VueRouter({
     routes

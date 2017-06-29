@@ -1,15 +1,16 @@
 /**
  * loading type
- * @param {String} method ajax 方法
+ * @param {String} config ajax 配置
  * 3: 全屏覆盖  4: 中间一块
  */
-var loading = (method) => {
+var loading = (config) => {
+    // console.log(config)
     var type = 3
 
-    if (method == 'post') {
+    if (config.method == 'post') {
         type = 4
     }
-    return type
+    return config.loading || type
 }
 
 /**
@@ -17,10 +18,10 @@ var loading = (method) => {
  * @param {Object} error
  */
 var errHandle = (error) => {
-    console.log('Response', error.response);
-    console.log('Request', error.request);
-    console.log('Error', error.message);
-    console.log('Config', error.config);
+    // console.log('Response', error.response);
+    // console.log('Request', error.request);
+    // console.log('Error', error.message);
+    // console.log('Config', error.config);
 
     var errMsg = error.message.indexOf('timeout') > -1 ? '请求超时' : '网络错误';
 
@@ -31,13 +32,12 @@ var errHandle = (error) => {
 
 /**
  * axios 全局配置
- * @param {Object} _ajax  axios 实例
- * @param {Number} _type  是否处理未登录
+ * @param {Object} instance  axios 实例
  */
-export default (_ajax) => { /*添加请求拦截器*/
-    _ajax.interceptors.request.use(function(config) {
+export default (instance) => { /*添加请求拦截器*/
+    instance.interceptors.request.use(function(config) {
         /*在发送请求之前做某事*/
-        layer.loading(loading(config.method))
+        layer.loading(loading(config))
         return config;
 
     }, function(error) {
@@ -47,9 +47,9 @@ export default (_ajax) => { /*添加请求拦截器*/
     });
 
     /*添加响应拦截器*/
-    _ajax.interceptors.response.use(function(res) {
+    instance.interceptors.response.use(function(res) {
         /*对响应数据做些事*/
-        console.log(res)
+        // console.log(res)
         layer.closeAll()
 
         return res.data;

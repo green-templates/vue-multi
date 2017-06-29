@@ -8,8 +8,9 @@ import '../../../service/storage'
 import '../../../service/title'
 
 import '../../../service/layer'
-import '../../../service/ajax/ajax'
+import InitAjax from '../../../service/ajax/InitAjax'
 
 import validate from '../../../service/validate'
+Vue.use(validate)
 
-export default validate
+window.ajax = new InitAjax()

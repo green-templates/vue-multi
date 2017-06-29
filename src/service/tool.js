@@ -1,3 +1,5 @@
+import qs from 'qs'
+
 ;
 !((window) => {
     var root = document.documentElement;
@@ -95,6 +97,37 @@
             }
 
             return obj;
+        },
+        /**
+         * 去除空格
+         * @param {String} s
+         */
+        trim(s) {
+            return s.replace(/\s/g, '')
+        },
+        /**
+         * 某段时间内只执行 1 次
+         * @param {Function} cb 回调函数
+         * @param {Number} time 时间
+         */
+        once(cb, time) {
+            this.once.now = Date.now()
+            this.once.old = this.once.old || 0
+            var detel = this.once.now - this.once.old
+
+            console.log(this.once.now, this.once.old, detel)
+
+            detel > time && cb()
+            this.once.old = this.once.now
+        },
+        /**
+         * 获取查询字符串
+         * @param {String} s 查询字符串 名称
+         * e.g. ?channel=xxx => tool.queryStr('channel')
+         */
+        queryStr(s) {
+            var queryStr = qs.parse(location.search.substr(1))
+            return queryStr[s] || ''
         }
     }
 
