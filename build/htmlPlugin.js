@@ -1,3 +1,7 @@
+/**
+ * 设置 HtmlWebpackPlugin
+ */
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path')
 var getEntry = require('./entry')

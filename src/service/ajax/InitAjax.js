@@ -1,3 +1,18 @@
+/**
+ * 从 axios 封装的 ajax 构造函数
+ * e.g.
+ * import InitAjax from './InitAjax.js
+ * var ajax1 = new InitAjax()
+ * var ajax2 = new InitAjax({
+ *  config() {
+ *      return {
+ *          headers: {}
+ *      }
+ *  },
+ *  host: ''
+ * })
+ */
+
 // 兼容某些低版本手机不支持 Promise  e.g. 锤子
 // https://github.com/mzabriskie/axios#promises
 require('es6-promise').polyfill();
@@ -27,11 +42,10 @@ var defaults = {
     },
     host: ''
 }
+
 /**
  * 设置 ajax 配置
  * @param {Object} options 配置选项
- * e.g.
- * var ajax = new InitAjax()
  */
 function InitAjax(options) {
     this.options = tool.merge(defaults, options)
@@ -46,13 +60,19 @@ function InitAjax(options) {
 InitAjax.prototype = {
     all: axios.all,
     spread: axios.spread,
+    /**
+     * 请求方法
+     * @param {String} url 请求地址
+     * @param {Object} params 参数
+     * @param {Object} options axios.defaults 配置, 可添加 loading: 3|4 参数 修改 loading 样式, 默认为 3, post 为 4
+     */
     get(url, params, options) {
-        jsbridge.isApp() && setOption.setConfig(this.options.config(), this.instance)
+        setOption.setConfig(this.options.config(), this.instance)
 
         return this.instance.get(this.host + url, tool.merge({ params }, options))
     },
     post(url, params, options) {
-        jsbridge.isApp() && setOption.setConfig(this.options.config(), this.instance)
+        setOption.setConfig(this.options.config(), this.instance)
 
         return this.instance.post(this.host + url, qs.stringify(params), options)
     }

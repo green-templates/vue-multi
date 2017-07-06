@@ -1,4 +1,8 @@
 /**
+ * ajax 全局配置
+ */
+
+/**
  * loading type
  * @param {String} config ajax 配置
  * 3: 全屏覆盖  4: 中间一块

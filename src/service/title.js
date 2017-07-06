@@ -1,8 +1,9 @@
+/**
+ * 设置网页标题
+ * e.g. iOS title 不修改
+ */
 ;
 !((window) => {
-    /**
-     * 设置网页标题
-     */
     var title = (title) => {
 
         window.document.title = title;

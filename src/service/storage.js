@@ -1,3 +1,6 @@
+/**
+ * localStorage + cookie
+ */
 ;
 !((window) => {
     var storage = {

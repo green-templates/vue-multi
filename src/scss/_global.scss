@@ -31,13 +31,13 @@ $design_width: 750 !default; //默认 设计稿 宽度
 // color
 $c-theme: #00ABF0 !default;
 $c-base: #333 !default;
-$c-border: #DBDBDB;
-$c-bg: #F7F7F7;
+$c-border: #DBDBDB !default;
+$c-bg: #F7F7F7 !default;
 
-$c-white: #fff;
-$c-gray: #BBBBBB;
-$c-yellow: #FFB700;
-$c-red: #E33133;
+$c-white: #fff !default;
+$c-gray: #BBBBBB !default;
+$c-yellow: #FFB700 !default;
+$c-red: #E33133 !default;
 
 // size
 $s-base: rem(30) !default;

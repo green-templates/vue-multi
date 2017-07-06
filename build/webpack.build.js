@@ -61,7 +61,7 @@ config.plugins.unshift(
     }),
 
     //通用模块单独打包 manifest为runtime文件，里面包含了每个文件的hash，每次打包都会改变
-    //htmlWebpackPlugin 从右到左 依次插入index.html，如果 service 依赖于 lib ，需要把 service 放到 lib 前， e.g. service 为 Vue.direcitve，lib 为 vue
+    //htmlWebpackPlugin 从右到左 依次插入index.html，如果 service 依赖于 lib ，需要把 service 放到 lib 前， e.g. service 为 自定义的 js，lib 为 公用库
     new webpack.optimize.CommonsChunkPlugin({
         names: ['service', 'lib', 'manifest'],
         // names: ['lib', 'manifest'],

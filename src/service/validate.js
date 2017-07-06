@@ -10,6 +10,15 @@
  *   rule: ''
  *  }
  * }
+ * vForm: [
+ *  {
+ *      test: {
+ *       model: '',
+ *       err: '',
+ *       rule: ''
+ *      }
+ *  }
+ * ]
  */
 var validate = {
     rules: {

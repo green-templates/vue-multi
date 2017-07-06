@@ -1,5 +1,11 @@
-// 各实例不同配置
+/**
+ * ajax 各实例不同配置
+ */
+
 export default {
+    /**
+     * 环境判断
+     */
     env: {
         isDev() {
             return !!location.port
@@ -23,7 +29,7 @@ export default {
     setHost(hosts) {
         var host = ''
 
-        if (hosts && tcheck.isString(hosts)) host = hosts
+        if (hosts && tcheck.isString(hosts) && !this.env.isOnline()) host = hosts
 
         if (tcheck.isObject(hosts)) {
             // 线上

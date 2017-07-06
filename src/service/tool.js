@@ -1,3 +1,7 @@
+/**
+ * 一些方法
+ */
+
 import qs from 'qs'
 
 ;

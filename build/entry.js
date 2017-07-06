@@ -1,3 +1,7 @@
+/**
+ * 获取 'src/modules/' 下的文件夹, 设置 entry
+ */
+
 var path = require('path')
 var glob = require('glob')
 

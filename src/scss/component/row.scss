@@ -1,0 +1,56 @@
+@import '../_global.scss';
+
+/* 通栏样式 start */
+/*
+<div class="common-row">
+    <div class="row-left"></div>
+    <div class="row-right"></div>
+</div>
+<div class="common-row common-row-arrow">
+    <div class="row-left"></div>
+    <div class="row-right"></div>
+</div>
+*/
+.common-row {
+    padding: rem(30) 0;
+    overflow: hidden;
+    @include border($d: bottom);
+    @extend %bg-white;
+    @extend %db;
+
+    .row-left {
+        margin-right: rem(20);
+        @extend %fl;
+    }
+
+    .row-right {
+        @extend %fr;
+    }
+
+    .row-middle {
+        padding-left: rem(160);
+        padding-right: rem(260);
+    }
+}
+.common-row-arrow {
+    position: relative;
+
+    &:after {
+        content: '';
+        width: rem(20);
+        height: rem(20);
+        @include border($d: right);
+        @include border($d: top);
+        transform: rotate(45deg);
+        @extend %pos-a;
+        @extend %mg-auto;
+        @extend %dir-tb;
+        // right: rem(30);
+        right: rem(10);
+    }
+
+    .row-right {
+        padding-right: rem(45);
+    }
+}
+/* 通栏样式 end */

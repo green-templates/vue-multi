@@ -1,3 +1,7 @@
+/**
+ * layer 二次封装 line: 231
+ */
+
 /*!
 
  @Name：layer mobile v2.0 弹层组件移动版
@@ -225,7 +229,7 @@
     }();
 
     /**
-     * 以下自用
+     * layer 二次封装
      */
     var typing = {
         /**
@@ -239,6 +243,11 @@
                 type: type || 2
             })
         },
+        /**
+         * toast 信息
+         * @param {String} msg 提示内容
+         * @param {Object} option layer 选项
+         */
         tip(msg, option) {
             return layer.open(tool.merge({
                 skin: 'msg',
@@ -246,12 +255,14 @@
                 time: 2
             }, option))
         },
+        // 1 个按钮弹框
         warning(msg, option) {
             return layer.open(tool.merge({
                 content: msg || '没有内容',
                 btn: ['确定']
             }, option))
         },
+        // 2 个按钮弹框
         confirm(msg, option) {
             return layer.open(tool.merge({
                 content: msg || '没有内容',

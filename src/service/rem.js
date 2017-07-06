@@ -1,18 +1,22 @@
+/**
+ * rem 适配
+ * @param {Boolean} canScale    是否启用 initial-scale  当第三方样式文件不支持时
+ * e.g.
+ * import rem from './rem.js'
+ * rem()
+ *
+ * 参考 hostcss https://github.com/imochen/hotcss
+ */
+
 export default (canScale) => {
-    /**
-     * rem 适配
-     * @param {Boolean} canScale    是否启用 initial-scale  当第三方样式文件不支持时
-     * @param {Number} base_font    默认字体大小
-     * @param {Number} base_width   默认屏幕宽度 iphone5
-     * @param {Number} max_width    最大屏幕宽度
-     *
-     * 参考 hostcss https://github.com/imochen/hotcss
-     */
 
     var docEl = document.documentElement;
 
+    // 默认字体大小
     var base_font = 100;
+    // 默认屏幕宽度 iphone5
     var base_width = 320;
+    // 最大屏幕宽度
     var max_width = 540;
 
     var rem = {};
