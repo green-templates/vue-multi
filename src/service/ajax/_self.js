@@ -7,14 +7,8 @@ export default {
      * 环境判断
      */
     env: {
-        isDev() {
-            return !!location.port
-        },
         isOnline() {
             return location.origin.indexOf('.com') > -1
-        },
-        isTesting() {
-            return !(this.isDev() && this.isOnline())
         }
     },
     /**
@@ -32,10 +26,7 @@ export default {
         if (hosts && tcheck.isString(hosts) && !this.env.isOnline()) host = hosts
 
         if (tcheck.isObject(hosts)) {
-            // 线上
-            if (this.env.isOnline()) host = hosts.online
-            // 测试
-            if (this.env.isTesting()) host = hosts.testing
+            host = this.env.isOnline() ? hosts.online : hosts.testing
         }
 
         return host
