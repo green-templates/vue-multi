@@ -48,7 +48,7 @@ var defaults = {
  * @param {Object} options 配置选项
  */
 function InitAjax(options) {
-    this.options = tool.merge(defaults, options)
+    this.options = tool.merge(true, defaults, options)
 
     this.host = setOption.setHost(this.options.host)
 
