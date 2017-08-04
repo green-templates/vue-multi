@@ -5,7 +5,7 @@
 /**
  * loading type
  * @param {String} config ajax 配置
- * 3: 全屏覆盖  4: 中间一块
+ * 3: 全屏覆盖  4: 中间一块  false: 无
  */
 var loading = (config) => {
     // console.log(config)
@@ -41,7 +41,7 @@ var errHandle = (error) => {
 export default (instance) => { /*添加请求拦截器*/
     instance.interceptors.request.use(function(config) {
         /*在发送请求之前做某事*/
-        layer.loading(loading(config))
+        if (config.loading !== false) layer.loading(loading(config))
         return config;
 
     }, function(error) {

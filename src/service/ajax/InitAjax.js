@@ -26,7 +26,7 @@ import setGlobal from './_global'
 import setOption from './_self'
 
 /**
- * @param {Function} options.config 配置 对应 axios.defaults
+ * @param {Object} options.config 配置 对应 axios.defaults
  * @param {String | Object} options.host 域名配置
  * String => 'testing-host'
  * Object => {
@@ -35,10 +35,8 @@ import setOption from './_self'
  * }
  */
 var defaults = {
-    config() {
-        return {
-            headers: {}
-        }
+    config: {
+        headers: {}
     },
     host: ''
 }
@@ -52,7 +50,7 @@ function InitAjax(options) {
 
     this.host = setOption.setHost(this.options.host)
 
-    this.instance = axios.create(setOption.setConfig(this.options.config()))
+    this.instance = axios.create(setOption.setConfig(this.options.config))
     setGlobal(this.instance)
     // console.log(this)
 }
@@ -64,16 +62,12 @@ InitAjax.prototype = {
      * 请求方法
      * @param {String} url 请求地址
      * @param {Object} params 参数
-     * @param {Object} options axios.defaults 配置, 可添加 loading: 3|4 参数 修改 loading 样式, 默认为 3, post 为 4
+     * @param {Object} options axios.defaults 配置, 可添加 loading: 3|4|false 参数 修改 loading 样式, 默认为 3, post 为 4
      */
     get(url, params, options) {
-        setOption.setConfig(this.options.config(), this.instance)
-
         return this.instance.get(this.host + url, tool.merge({ params }, options))
     },
     post(url, params, options) {
-        setOption.setConfig(this.options.config(), this.instance)
-
         return this.instance.post(this.host + url, qs.stringify(params), options)
     }
 }
