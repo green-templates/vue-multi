@@ -1,0 +1,36 @@
+@import './rem.scss';
+/*
+正方形
+ */
+@mixin square($width) {
+  width: $width;
+  height: $width;
+}
+/*
+圆形
+ */
+@mixin circle($width) {
+  @include square($width);
+  border-radius: 100%;
+}
+
+/*
+下拉箭头
+ */
+@mixin arrow-drop($dir: top, $size: rem(6), $color: #333) {
+  display: inline-block;
+  @include square(0px);
+  border: $size solid transparent;
+  border-#{$dir}-color: $color;
+}
+
+
+/* 箭头 */
+
+@mixin arrow($rotate: 45deg, $size: rem(7), $color: #333, $thick: rem(1)) {
+  display: inline-block;
+  @include square($size);
+  border-right: $thick solid $color;
+  border-top: $thick solid $color;
+  transform: rotate($rotate);
+}

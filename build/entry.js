@@ -1,30 +1,34 @@
 /**
- * 获取 'src/modules/' 下的文件夹, 设置 entry
+ * 获取 'src/modules/' 下的文件夹, 设置 entrys
  */
 
-var path = require('path')
-var glob = require('glob')
+const path = require('path')
+const glob = require('glob')
 
-module.exports = (function() {
-    var entry = {}; //读取开发目录,并进行路径裁剪
-    var modules = []
+const entrys = {}
+const modules = []
 
-    var files = glob.sync(path.resolve(__dirname, '../src/modules/**/app.js'))
+const files = glob.sync(path.resolve(__dirname, '../src/modules/**/main.js'))
 
-    files.forEach(function(name) {
-        var start = name.indexOf('modules/') + 8,
-            end = name.length - 3;
-        var n = name.slice(start, end);
-        n = n.slice(0, n.lastIndexOf('/')); //保存各个组件的入口
-        entry[n] = [name];
+// 读取开发目录,并进行路径裁剪
+files.forEach(name => {
+  const start = name.indexOf('modules/') + 8
+  const end = name.length - 3
+  let n = name.slice(start, end)
+  n = n.slice(0, n.lastIndexOf('/')) // 保存各个组件的入口
 
-        modules.push(n)
-    });
+  entrys[n] = name
 
-    var entrys = {
-        entry,
-        modules
-    }
-    console.log(entrys)
-    return entrys
-})()
+  modules.push(n)
+})
+
+console.log('========== entrys ==========')
+console.log(entrys)
+console.log('')
+
+console.log('========== modules ==========')
+console.log(modules)
+console.log('')
+
+exports.entrys = entrys
+exports.modules = modules

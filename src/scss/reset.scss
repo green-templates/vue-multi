@@ -1,212 +1,104 @@
+@import './_global.scss';
 // reset
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  &:before,
+  &:after {
     box-sizing: inherit;
-    &:before,
-    &:after {
-        box-sizing: inherit;
-    }
+  }
 }
 
 html {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    @extend %box-bb;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // base
+html {
+  margin: 0 auto;
+  font-size: $baseFont + px;
+  // max-width: 540px;
+}
+
+body {
+  @extend %font-family;
+  color: $color-black;
+  line-height: 1.5;
+  word-break: break-all;
+  font-size: $size-base;
+}
+
 html,
 body {
-    height: 100%;
-}
-
-html {
-    font-size: $html_font_size;
-    margin: 0 auto;
-    background: #fff;
-}
-
-body {
-    @extend %font-family;
-    font-size: $s-base;
-    color: $c-base;
-    line-height: 1.5;
-    word-break: break-all;
-    background: $c-bg;
-    min-height: 100%;
-}
-
-$headings: ( h1: $s-lg, h2: $s-md, h3: $s-sm) !default;
-@each $header,
-$s in $headings {
-    #{$header} {
-        font-size: $s;
-        @extend %fw-n;
-    }
-}
-
-h4,
-h5,
-h6 {
-    font-size: $s-base;
-    @extend %fw-n;
+  height: 100%;
 }
 
 img {
-    width: 100%;
+  width: 100%;
+  display: block;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 li {
-    @extend %li-no;
+  list-style: none;
 }
 
-input,
+input[type=text],
 textarea {
-    width: 100%;
-    &:disabled {
-        background: transparent;
-    }
+  width: 100%;
+  &:disabled {
+    background: transparent;
+  }
+}
+
+button {
+  border: none;
+  &:hover {
+    background: $color-hover;
+  }
 }
 
 input,
 button,
 textarea {
-    @include border($w: 0);
-    outline: none;
+  border: none;
+  outline: none;
 }
-
 textarea {
-    resize: none;
+  resize: none;
 }
 
-/* common class
-   ========================================================================== */
-
-.row-wrap {
-    padding: 0 rem(40);
-    @extend %bg-white;
-    margin-bottom: rem(12);
+::placeholder {
+  color: $color-gray;
 }
 
-.row-btn-wrap {
-    line-height: rem(64);
-    .common-row {
-        padding: rem(20) 0;
-    }
-    .row-btn {
-        height: rem(64);
-        line-height: rem(64);
-        width: 100%;
-        padding: 0 rem(20);
-    }
+svg path {
+  fill: inherit;
 }
 
-.border-none {
-    @extend %border-none;
-    .common-row {
-        @extend %border-none;
-    }
+// 去除 chrome 默认填充样式
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: #FFFFFF;
+  background-image: none;
+  color: #333;
 }
 
-.bdb {
-    @include border($d: bottom);
-}
-
-.toe {
-    @extend %toe;
-}
-
-.pos-r {
-    @extend %pos-r;
-}
-
-.min-h-full {
-    min-height: 100%;
-}
-
-// float
-.clearfix {
-    @extend %clearfix;
-}
-
-.fl {
-    @extend %fl;
-}
-
-.fr {
-    @extend %fr;
-}
-
-// text-align
-.tac {
-    @extend %tac;
-}
-
-.tal {
-    @extend %tal;
-}
-
-.tar {
-    @extend %tar;
-}
-
-// color
-.c-theme {
-    color: $c-theme;
-}
-
-.c-base {
-    color: $c-base;
-}
-
-.c-border {
-    color: $c-border;
-}
-
-.c-white {
-    color: $c-white;
-}
-
-.c-gray {
-    color: $c-gray;
-}
-
-.c-yellow {
-    color: $c-yellow;
-}
-
-.c-red {
-    color: $c-red;
-}
-
-.bg-white {
-    @extend %bg-white;
-}
-
-// font-size
-.fs-min {
-    font-size: $s-min;
-}
-
-.fs-max {
-    font-size: $s-max;
-}
-
-.fs-md {
-    font-size: $s-md;
-}
-
-// margin
-.mb-sm {
-    @extend %mb-sm;
+.mask {
+  @include square(100%);
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
 }

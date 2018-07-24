@@ -1,0 +1,20 @@
+// 默认 字体 大小
+$baseFont: 100 !default;
+// 默认 屏幕 宽度
+$baseWidth: 320 !default;
+// 默认 设计稿 宽度
+$designWidth: 750 !default;
+
+/**
+ * rem($px, $width)
+ * @param  {Number} $px     px值
+ * @param  {Number} $width  设计稿宽度
+ * @return {Number}         rem值
+ * e.g.
+ * rem(30)
+ * rem(30, 750)
+ */
+
+@function rem($px, $width: $designWidth) {
+  @return $px * $baseWidth / $baseFont / $width+rem;
+}

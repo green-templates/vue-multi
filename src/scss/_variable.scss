@@ -1,0 +1,52 @@
+@import './rem.scss';
+
+/* variable
+   ========================================================================== */
+
+$font-family: Open Sans,
+SF Pro Text,
+Helvetica Neue,
+Helvetica,
+Arial,
+sans-serif;
+/*
+color
+ */
+// 主题蓝色
+$color-theme: #018FF6;
+// body
+$color-body: #F4F5FA;
+// hover
+$color-hover: #0080DF;
+// 币币交易 背景
+$color-dark-bg: #232636;
+// 币币交易 标题色块
+$color-dark-light: #181B29;
+// 币币交易 主体色块
+$color-dark: #131726;
+// 白色
+$color-white: #fff;
+// 浅白色
+$color-white-light: rgba(255, 255, 255, 0.2);
+$color-white-light-x: rgba(255, 255, 255, 0.6);
+// 黑色
+$color-black: #333;
+// 浅黑色
+$color-black-light: rgba(0, 0, 0, 0.4);
+// 灰色
+$color-gray: #8E8E8E;
+$color-gray-light: #EAEAEA;
+
+$color-error: #FF0000;
+$color-red: #C94748;
+$color-green: #178D6A;
+$color-orange: #FF8801;
+/*
+size
+ */
+$size-base: rem(32);
+$size-sm: rem(28);
+$size-md-x: rem(36);
+$size-lg: rem(40);
+$size-lg-x: rem(48);
+$size-lg-xx: rem(80);

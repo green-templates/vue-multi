@@ -1,5 +1,11 @@
-@import './normalize.scss';
-@import './_global.scss';
+@import 'normalize.css';
 @import './reset.scss';
-@import './component/component.scss';
-@import './layer.scss';
+@import './component.scss';
+@import './hack.scss';
+@import './form.scss';
+
+/* 自适应
+   ========================================================================== */
+// @media screen and (max-width: 768px) {
+
+// }

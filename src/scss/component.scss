@@ -1,0 +1,109 @@
+@import './_global.scss';
+
+/*
+网格系统
+
+// 通过重设变量自定义间距
+$grid-gutter-space: 5px;
+
+<div class="grid">
+  <div class="grid-col grid-col-12">12</div>
+  <div class="grid-col grid-col-12">12</div>
+ </div>
+
+ <div class="grid grid-gutter">
+  <div class="grid-col grid-col-12">12</div>
+  <div class="grid-col grid-col-12">12</div>
+ </div>
+ */
+
+// class-name
+$grid: grid !default;
+$grid-col: -col !default;
+$grid-gutter: -gutter !default;
+$grid-column: 24 !default; //分24栏
+$grid-gutter-space: 2% !default; //间距8px 可选
+.#{$grid} {
+  @extend %clearfix;
+  &#{$grid-col} {
+    @extend %float-left;
+  }
+  &#{$grid-gutter} {
+    margin: 0 (-$grid-gutter-space);
+    .#{$grid}#{$grid-col} {
+      padding: 0 ($grid-gutter-space);
+    }
+  }
+}
+
+@for $i from 1 through $grid-column {
+  .#{$grid}#{$grid-col}-#{$i} {
+    width: $i / $grid-column * 100%;
+  }
+}
+
+/*
+button
+ */
+.btn-wrap {
+  padding-top: 48px;
+  padding-bottom: 24px;
+  position: relative;
+}
+.btn {
+  width: 76px;
+  height: 30px;
+  line-height: 30px;
+  @extend %text-center;
+  background: $color-theme;
+  color: $color-white;
+  font-size: 14px;
+  &-shadow{
+    box-shadow: 0 6px 12px 0 rgba(1, 143, 246, 0.3);
+  }
+  &-border {
+    @extend .btn;
+    height: 28px;
+    line-height: 28px;
+    box-sizing: content-box;
+    border: 1px solid #018FF6;
+    background: transparent;
+    color: #018FF6;
+    border-radius: 2px;
+  }
+  &-border:hover{
+    color: #ffffff;
+  }
+  &-normal {
+    @extend .btn;
+    height: 54px;
+    line-height: 54px;
+    border-radius: 3px;
+    font-size: $size-lg;
+    width: 100%;
+  }
+}
+/*
+close
+ */
+.x-close {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  &:before,
+  &:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #bbb;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}

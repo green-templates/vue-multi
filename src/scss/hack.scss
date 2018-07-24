@@ -1,0 +1,6 @@
+// 浏览器兼容
+
+// 去除 chrome input 默认黄色背景
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}

@@ -1,6 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
-moduleName=${1}
-libType=${2}
-
-node build/webpack.build.js $moduleName $libType
+yarn build download
+yarn build download-gxb
