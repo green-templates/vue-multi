@@ -1,37 +1,45 @@
 /**
  * 设置 HtmlWebpackPlugin
+ * 生成多个页面模版
  */
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path')
-var getEntry = require('./entry')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const getEntry = require('./entry')
 
-function getConfig(name) {
-    return {
-        filename: process.env.NODE_ENV == 'dev' ? name + '/index.html' : 'index.html',
-        template: path.resolve(__dirname, '../src/modules/' + name + '/index.html'),
-        chunksSortMode: 'dependency', //按依赖顺序引入
-        chunks: [name, 'service', 'lib', 'manifest'], // 每个html引用的js模块
-        minify: {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeAttributeQuotes: true
-        }
-    }
+function getConfig (name) {
+  return {
+    // 设置不同目录的 index.html
+    filename: process.env.NODE_ENV === 'development' ? name + '/index.html' : 'index.html',
+    template: path.resolve(__dirname, '../src/modules/' + name + '/index.html'),
+    inject: true,
+    minify: {
+      removeComments: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true
+      // more options:
+      // https://github.com/kangax/html-minifier#options-quick-reference
+    },
+    // index.html 注入文件，区分不同目录，默认 all 无法区分不同的项目
+    chunks: [name, 'vendor', 'manifest'],
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
+  }
 }
 
-module.exports = (name, type) => {
-    var htmlPlugins = []
+module.exports = (name) => {
+  const htmlPlugins = []
 
-    if (type == 'all') {
-        for (var k in getEntry.modules) {
-            if (getEntry.modules.hasOwnProperty(k)) {
-                var el = getEntry.modules[k];
-                htmlPlugins.push(new HtmlWebpackPlugin(getConfig(el)))
-            }
-        }
-    } else {
-        htmlPlugins.push(new HtmlWebpackPlugin(getConfig(name)))
+  if (name === 'all') {
+    for (const k in getEntry.modules) {
+      if (getEntry.modules.hasOwnProperty(k)) {
+        const el = getEntry.modules[k]
+        htmlPlugins.push(new HtmlWebpackPlugin(getConfig(el)))
+      }
     }
-    return htmlPlugins
+  } else {
+    htmlPlugins.push(new HtmlWebpackPlugin(getConfig(name)))
+  }
+  // console.log(htmlPlugins)
+  return htmlPlugins
 }

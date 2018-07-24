@@ -1,38 +1,22 @@
 <template>
-    <div class="app-single">
-        {{test}}
-
-        <img src="../../images/vue.png" alt="">
-        <img src="./images/vue.png" alt="">
-
-        <d-console></d-console>
-    </div>
+  <div class="app">
+    single
+  <img src="./images/asset.svg" alt="">
+  </div>
 </template>
 
 <script>
-import DConsole from '../../components/DConsole'
-
 export default {
-  data() {
-      return {
-          test: 'app-single'
-      }
-  },
-  components: {
-    DConsole
+  name: 'app',
+  data () {
+    console.log('single')
+    return {}
   }
 }
 </script>
 
-
 <style lang="scss">
-@import '../../scss/_global.scss';
-
-    .app-single {
-        color: red;
-
-        img {
-            width: rem(200);
-        }
-    }
+.app {
+  color: green;
+}
 </style>
