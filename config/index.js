@@ -16,15 +16,10 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // '/api/v1': {
-      //   target: 'http://apitest.bi.sale/',
+      // '/api': {
+      //   target: '',
       //   changeOrigin: true
-      // },
-      '/api': {
-        target: 'http://47.75.183.114:9001/',
-        // target: 'http://api01.bisale.org/',
-        changeOrigin: true
-      }
+      // }
     },
 
     // Various Dev Server settings
